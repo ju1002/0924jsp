@@ -2,11 +2,17 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
+
+
+
+
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title> 푸터야</title>
 </head>
 <body>
+Copyright © 1998-2025 KH Information Educational Institute All Right Reserved
+
+<a href="."></a>
 
 </body>
 </html>

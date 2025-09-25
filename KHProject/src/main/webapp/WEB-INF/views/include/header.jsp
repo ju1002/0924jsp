@@ -103,7 +103,7 @@
           	   로그인 후 : 내정보/로그아웃  조건문 적용 
           	   chosse when otherwise를 사용하기 전 맨위에서 해줘야함
           	   JSP는 서버에서 동작하는 프로그램 -->
-          
+          <%--<c:when> 얘는 여기 choose에 들어가면 안된다. --%>
           <c:choose>
           <c:when test="${ empty sessionScope.userInfo }">
           <li class="nav-item">

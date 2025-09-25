@@ -77,7 +77,6 @@ public class LoginController extends HttpServlet {
 			//웰컴 파일을 다시 보여줘야지  requestDispatcher get해오고 그걸 전달 해야 하니까 forward
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}else {
-			
 			//로그인 실패했어!!!
 			request.setAttribute("msg","로그인에 실패했습니다");//msg키값에 로그인에 실패했다고 세팅하고
 			request.getRequestDispatcher("/WEB-INF/views/common/result_page.jsp").forward(request, response);//result.jsp에 넘겨줌		

@@ -10,8 +10,8 @@ public class Member {
 	 private String userId;
 	 private String userPwd;
 	 private String userName; 
-	 private String Email;
-	 private Date EnrollDate;
+	 private String email;
+	 private Date enrollDate;
 	 private Date modiOfyDate;
 	 private String status;
 	 
@@ -25,8 +25,8 @@ public class Member {
 		this.userId = userId;
 		this.userPwd = userPwd;
 		this.userName = userName;
-		Email = email;
-		EnrollDate = enrollDate;
+		this.email = email;
+		this.enrollDate = enrollDate;
 		this.modiOfyDate = modiOfyDate;
 		this.status = status;
 	}
@@ -55,16 +55,16 @@ public class Member {
 		this.userName = userName;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 	public Date getEnrollDate() {
-		return EnrollDate;
+		return enrollDate;
 	}
 	public void setEnrollDate(Date enrollDate) {
-		EnrollDate = enrollDate;
+		this.enrollDate = enrollDate;
 	}
 	public Date getModiOfyDate() {
 		return modiOfyDate;
@@ -81,7 +81,7 @@ public class Member {
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
-				+ ", Email=" + Email + ", EnrollDate=" + EnrollDate + ", modiOfyDate=" + modiOfyDate + ", status="
+				+ ", Email=" + email + ", EnrollDate=" + enrollDate + ", modiOfyDate=" + modiOfyDate + ", status="
 				+ status + "]";
 	}
 	

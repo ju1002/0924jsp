@@ -26,5 +26,71 @@
   	 	       STATUS='Y'
   	 	       
   	</select>
+  	<insert id="signUp"
+  			parameterType="com.kh.java.member.model.vo.Member">
+  			INSERT
+  			  INTO
+  			      KH_MEMBER
+  			      (
+  			      USER_NO
+  			    , USER_ID
+  			    , USER_PWD
+  			    , USER_NAME
+  			    , EMAIL
+  			      )
+  			VALUES
+  			 	 (
+  			 	 KH_UNO.NEXTVAL
+  			   , #{userId}
+  			   , #{userPwd}
+  			   , #{userName}
+  			   , #{email}
+  			 	 )
+  			 	      
+  			 	      
+  			 	      
+  			      
+  			      
+  			      
+  			      
+  			      
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	</insert>
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
   
   </mapper>

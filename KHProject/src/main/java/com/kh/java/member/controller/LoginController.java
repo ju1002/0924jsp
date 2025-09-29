@@ -75,8 +75,14 @@ public class LoginController extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("userInfo", loginMember);
 			//웰컴 파일을 다시 보여줘야지  requestDispatcher get해오고 그걸 전달 해야 하니까 forward
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
-		}else {
+			//request.getRequestDispatcher("/index.jsp").forward(request, response);
+			
+			
+///클라이언츠에 게 URL을 다시 요청하게 함
+//response 객체를 이용
+//response
+			response.sendRedirect("/KH");
+		}else { 
 			//로그인 실패했어!!!
 			request.setAttribute("msg","로그인에 실패했습니다");//msg키값에 로그인에 실패했다고 세팅하고
 			request.getRequestDispatcher("/WEB-INF/views/common/result_page.jsp").forward(request, response);//result.jsp에 넘겨줌		
@@ -95,6 +101,9 @@ public class LoginController extends HttpServlet {
 		 * 
 		 * => session,request를 많이 사용함
 		 */
+
+	
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

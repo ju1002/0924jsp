@@ -193,6 +193,19 @@
 	</div>
 </div>
 
+<script>
+	//const a=2;
+		//if(a==3){
+	
+		//<%
+		//System.out.println("이거 되는 거임");
+	
+		%>
+		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+		}
+
+</script>
+
 
 </body>
 </html>

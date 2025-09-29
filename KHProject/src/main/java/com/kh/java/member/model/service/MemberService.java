@@ -42,5 +42,18 @@ public class MemberService {
 		}
 		//비밀번호 검증 
 	}
+	
+	public int signUp(Member member) {
+		SqlSession sqlSession= Template.getSqlSession();
+		
+		int result = md.signUp(sqlSession,member);
+		if(result>0) {
+			sqlSession.commit();
+		}
+		sqlSession.close();
+		
+		
+		return result;
+	}
 
 }

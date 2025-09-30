@@ -7,7 +7,7 @@ import com.kh.java.member.model.dao.MemberDao;
 import com.kh.java.member.model.vo.Member;
 
 public class MemberService {
-	MemberDao md = new MemberDao();
+	private MemberDao md = new MemberDao();
 	
 	
 	public Member login(Member member){
@@ -17,19 +17,14 @@ public class MemberService {
 		//또한 트랜잭션 처리도 해줘야 함 
 		//validateMember(member);
 		SqlSession sqlSession = Template.getSqlSession();
-		Member loginMember= md.login(sqlSession,member); //dao에게 보내줘 그리고 조회 성공하면 계쏙 쓸꺼니까 변수에 담아 
+		//sqlsession은 db와 연결하는 매개체이다.
+		//sqlsession은 select,insert,update,deletet같은 메소드를 사용가능하다.
+		Member loginMember = md.login(sqlSession,member); //dao에게 보내줘 그리고 조회 성공하면 계쏙 쓸꺼니까 변수에 담아 
 		
 		sqlSession.close();
 		
 		return loginMember;
-		
-		
-		
-		
-		
-		
-		
-		
+	
 	}
 	public void validateMember(Member member) {//비즈니스 로직 원래는 이걸 먼저 해야함  
 		//아이디 검증 널인지 비어있는지 그리고 한글로 써서 보내는 등 불상사를 일으킬 수 있는 값을 사용자가 입력할 수도 있기 때문에 정규 표현식 적용

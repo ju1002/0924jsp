@@ -47,10 +47,14 @@ public class LoginController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");//얘가 1번 작업 함 post방식이어서 인코딩한것
 		String userId =request.getParameter("userId");
 		String userPwd=request.getParameter("userPwd");//얘가 2번 작업
+		//로그인이니까 사용자가 입력한 아이디와 비밀번호를 요청시 전달값으로 getParameter로 가져와서
+		//변수에 대입한다
 		
 //		System.out.println(userId);//출력까지 해서 잘 됐는지 확인 해봄
 //		System.out.println(userPwd);
 		//값이 두개니까 어디다 담을꺼임 member vo에 필드 만듬 그 필드에 사용자에게 요청 받은 것을 필드에 담아준다.
+		//Member타입의 member에 Member클래스의 주소값을 담는다 그 주소안에는 필드가 있지 
+		//그 member에 사용자에게 요청받은 userId롸 Pwd를 setting한다.
 		Member member = new Member();
 		member.setUserId(userId);
 		member.setUserPwd(userPwd);//여기 까지가 2번 다 한거임
@@ -72,16 +76,22 @@ public class LoginController extends HttpServlet {
 			//session의 Attribute로 사용자 정보 추가
 			//session의 타입 : HttpSession
 			//=>현재 요청 보내는 Client의 Session : request에 있음 request.getSession();
+			//세션은 사용자가 웹사이트에 접속해서 활동하는 동안 서버가 사용자의 정보를 유지하는 방법입니다.
+			//서블릿,jsp에서 세션을 가져오는 방법이다. 
+			//session은 사용자의 정보이고 이 값을 가져오는 역할은 request.getParameter 요청한 값을 가져온다라고 해석하면 된다.
+			//getSession()에는 내가 이후에 적은 값을 담아놓는다.
 			HttpSession session = request.getSession();
 			session.setAttribute("userInfo", loginMember);
 			//웰컴 파일을 다시 보여줘야지  requestDispatcher get해오고 그걸 전달 해야 하니까 forward
 			//request.getRequestDispatcher("/index.jsp").forward(request, response);
-			
-			
-///클라이언츠에 게 URL을 다시 요청하게 함
+			//request.getRequestDispatcher이거는 서버내부를 뜻하고  index.jsp로 사용자가 보낸 요청과 
+			//서버가 응답한것을 넘긴다는 의미이다.
+			//index.jsp는 웰컴파일임
+///클라이언트에게 URL을 다시 요청하게 함
 //response 객체를 이용
 //response
-			response.sendRedirect("/KH");
+			response.sendRedirect("/KH"); //이거는 로그인에 성공을 하면 url인 /KH 로 가라는 거임 response는 서버가 응답
+			//을 한거고 sendRedirect는 다른 url로 가라는 의미임
 		}else { 
 			//로그인 실패했어!!!
 			request.setAttribute("msg","로그인에 실패했습니다");//msg키값에 로그인에 실패했다고 세팅하고

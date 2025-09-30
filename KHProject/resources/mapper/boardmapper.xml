@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<select id = "selectCategory">
+	SELECT
+	  		CATEGORY_NO categoryNo
+	  	  , CATEGORY_NAME categoryName
+	  FROM
+	  		KH_
+</select>

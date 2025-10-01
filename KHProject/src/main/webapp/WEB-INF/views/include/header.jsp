@@ -71,7 +71,14 @@
 
 </head>
 
+
 <body id="page-top">
+<c:if test="${not empty alertMsg }">
+<script>
+alert("${alertMsg}");
+</script>
+<c:remove var = "alertMsg" scope="session"/>
+</c:if>
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -87,13 +94,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">HOME</a>
+            <a class="nav-link js-scroll-trigger" href="/KH">HOME</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#">공지사항</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">게시판</a>
+            <a class="nav-link js-scroll-trigger" href="/KH/boards">게시판</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#">사진게시판</a>

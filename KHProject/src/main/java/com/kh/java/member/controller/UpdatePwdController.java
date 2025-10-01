@@ -1,6 +1,7 @@
 package com.kh.java.member.controller;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,29 +13,47 @@ import javax.servlet.http.HttpSession;
 import com.kh.java.member.model.service.MemberService;
 import com.kh.java.member.model.vo.Member;
 
-@WebServlet("/myPage")
-public class MyInfoController extends HttpServlet {
+@WebServlet("/updatePwd.me")
+public class UpdatePwdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public MyInfoController() {
+    public UpdatePwdController() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	//1.post
+		request.setCharacterEncoding("UTF-8");
+	//2.값뽑기
+		String userPwd = request.getParameter("userPwd");
+		String updatePwd = request.getParameter("changePwd");
+		//update member set user_pwd= 새비밀번호
+		//where user_pwd = 기본 비밀번호
+		//식별할 수 있는 값이 필요함
 		HttpSession session = request.getSession();
 		Member member = (Member)session.getAttribute("userInfo");
-		Member userInfo = new MemberService().login(member);
+		Long userNo = member.getUserNo();
 		
-		if(session.getAttribute("userInfo")!=null){
-			session.setAttribute("userInfo", userInfo);
-	request.getRequestDispatcher("WEB-INF/views/member/my_page.jsp").forward(request, response);
-		}else { 
-			request.setAttribute("msg", "로그인하세요");
-			request.getRequestDispatcher("/WEB-INF/views/common/result_page.jsp").forward(request, response);
+		Map<String ,String> map =Map.of("userPwd",userPwd
+									 ,"updatePwd",updatePwd
+									 , "userNo",String.valueOf(userNo));
+		int result = new MemberService().updatePwd(map);
+		if(result>0) {
+			member.setUserPwd(updatePwd);
+		}else {
 			
 		}
+		
+		session.setAttribute("alertMsg", result>0 ? "병경성공!":"변경실패~");
+		
+		response.sendRedirect(request.getContextPath()+"/myPage");
+		}
 	
-	}
+	
+	
+	
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

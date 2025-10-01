@@ -1,5 +1,7 @@
 package com.kh.java.member.model.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.java.member.model.vo.Member;
@@ -19,5 +21,19 @@ public class MemberDao {
 		
 		return sqlSession.insert("MemberMapper.signUp",member);
 	}
+	
+	public int update(SqlSession sqlSession, Map<String,String>map) {
+		return sqlSession.update("MemberMapper.update", map);
+	}
+	
+	public int delete(SqlSession sqlSession, Member member) {
+		return sqlSession.update("MemberMapper.delete",member);
+	}
+	public int updatePwd(SqlSession sqlSession, Map<String,String>map) {
+		return sqlSession.update("MemberMapper.updatePwd",map);
+	}
+	
+	
+	
 
 }

@@ -24,7 +24,7 @@
 	<jsp:include page="../include/header.jsp" />
 	
 	<div style="width : 80%; margin : auto; padding : 50px;">
-		<form action="수정매핑" name="signup" id="signUpForm" method="post"
+		<form action="update.me" name="signup" id="signUpForm" method="post"
 						style="margin-bottom: 0;">
 			<table
 				style="cellpadding: 0; cellspacing: 0; margin: 0 auto; width: 100%">
@@ -49,7 +49,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td><input type="text" name="" id="user_name"
+					<td><input type="text" name="userName" id="user_name"
 						class="form-control tooltipstered" maxlength="6"
 						required="required" aria-required="true"
 						style="margin-bottom: 25px; width: 100%; height: 40px; border: 1px solid #d9d9de"
@@ -62,7 +62,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td><input type="email" name="" id="user_email"
+					<td><input type="email" name="email" id="user_email"
 						class="form-control tooltipstered" 
 						required="required" aria-required="true"
 						style="margin-bottom: 25px; width: 100%; height: 40px; border: 1px solid #d9d9de"
@@ -117,8 +117,8 @@
 	      </div>
 	
 	      <div class="modal-body">
-	        <form action="삭제요청 매핑값" method="post">
-	        
+	        <form action="delete.me" method="post">
+	        	<input type="hidden" name="userNo" value="${userInfo.userNo }"/>
 			  <div class="form-group">
 			    <label for="userPwd" style="font-size:12px; color:red">탈퇴를 원하신다면 비밀번호를 입력해주세요.</label>
 			    <input type="password" name="userPwd" class="form-control" placeholder="비밀번호를 입력해주세요." id="deletePwd" required>
@@ -161,7 +161,7 @@
 	
 	
 	      <div class="modal-body">
-	        <form action="비밀번호 수정 매핑값" method="post">
+	        <form action="updatePwd.me" method="post">
 	        
 			  <div class="form-group">
 			    <label for="userPwd">현재 비밀번호 :</label>

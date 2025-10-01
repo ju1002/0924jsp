@@ -21,10 +21,11 @@ public class LogoutController extends HttpServlet {
 	//방법1. request.getSession().removeAttribute("userInfo");
 	//방법2. session만료시키는  방법 
 		request.getSession().invalidate();
+		request.getSession().setAttribute("alertMsg", "데이터 날라감");
 	
 	//응답데이터 => 웰컴 파일 
 	//sendRedirect()
-		//System.out.println(request.getContextPath());
+		//System.out.println(request.getContextPath()); /Kh를 뜻함
 		response.sendRedirect(request.getContextPath());
 	
 	

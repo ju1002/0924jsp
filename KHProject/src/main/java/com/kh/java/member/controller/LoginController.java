@@ -90,6 +90,7 @@ public class LoginController extends HttpServlet {
 ///클라이언트에게 URL을 다시 요청하게 함
 //response 객체를 이용
 //response
+			session.setAttribute("alertMsg", "로그인에 성공하였습니다");
 			response.sendRedirect("/KH"); //이거는 로그인에 성공을 하면 url인 /KH 로 가라는 거임 response는 서버가 응답
 			//을 한거고 sendRedirect는 다른 url로 가라는 의미임
 		}else { 

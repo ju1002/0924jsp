@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.java.member.model.service.MemberService;
 import com.kh.java.member.model.vo.Member;
@@ -45,6 +46,8 @@ public class SignUpController extends HttpServlet {
 		
 		if(result>0) {
 			//성공했다
+			HttpSession session =request.getSession();
+			session.setAttribute("alertMsg","회원가입 성공");
 			response.sendRedirect(request.getContextPath());
 			
 			

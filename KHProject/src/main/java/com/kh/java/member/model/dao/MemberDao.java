@@ -13,7 +13,7 @@ public class MemberDao {
 		//우리는 전달 받은 모든 정보를 다 반환 해줄 거야 그니까 반환 형은 Member야
 		//내가 sql문을 실행할 거를 select 해야함  어디가서 SQL문 실행해 mapper에 login 가서 할꺼니까 경로 쓰고 , 내가 실행할 값을 적어 뭘 해? member을 실행할 꺼지
 		return sqlSession.selectOne("MemberMapper.login",member);
-		
+		//결과가 한 행이냐 여러 행이냐 에 따하 one, list결정됨
 	}
 	
 	

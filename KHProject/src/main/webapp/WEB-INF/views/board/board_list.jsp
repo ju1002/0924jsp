@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 
 header.masthead {
@@ -41,77 +42,68 @@ tr:hover{
                   </thead>
                   <tbody>
 	           
-	                
+	                <c:forEach var="board" items="${boards }">
                     <tr style="color: #52b1ff;"
                         class="board"
                         id="${ board.boardNo }">
                         <td>
-                        10
+                        ${board.boardNO }
                         </td>
                         <td>
-                        공용
+                        ${board.category }
                         </td>
                         <td>
-                        관리자
+                        ${board.boardWriter }
                         </td>
                         <td style="color: #52d6ffcc;">
-                        제목들어가는자리 &nbsp;
+                       <a href="detail.board?boardNo=${board.boardNo }">
+                        ${board.boardTitle } &nbsp;
+                       </a>
                         </td>
                         <td>
-                        2025-09-25
+                        ${board.createDate }
                         </td>
                         <td>
-                        5
+                        ${board.count }
                         </td>
                     </tr>    
+	                </c:forEach>
 	        
                   </tbody>
                   
                </table>               
             </div>            
          </div>
+         <script>
+         $(function(){
+        	 $('.board').click(e=> {
+        		 const targetId =e.currentTarget.id;
+        		 location.href =`detail.board?boardNo=\${targetId}`;
+        	 });
+         }
+         </script>
+         
       </div>
          <div class="paging-area" align="center" >
-        	
+        	<c:if test="${pi.cuttentPage>1 }">
 	        	<button 
 	       		class="btn btn-outline-primary" style="color:#52b1ff;"
-	       		onclick="location.href='이전페이지매핑값'">이전</button>
+	       		onclick="location.href='boards?page=${pi.cuttentPage-1}''">이전</button>
+        	</c:if>
         
 			
+                <c:forEach var="i" begin="${pi.startPage }"
+                					end="${pi.endPage }">
                 <button 
                 class="btn btn-outline-primary" style="color:#52b1ff;"
-                onclick="location.href='페이지요청'">1</button>
-                <button 
-                class="btn btn-outline-primary" style="color:#52b1ff;"
-                onclick="location.href='페이지요청'">2</button>
-                <button 
-                class="btn btn-outline-primary" style="color:#52b1ff;"
-                onclick="location.href='페이지요청'">3</button>
-                <button 
-                class="btn btn-outline-primary" style="color:#52b1ff;"
-                onclick="location.href='페이지요청'">4</button>
-                <button 
-                class="btn btn-outline-primary" style="color:#52b1ff;"
-                onclick="location.href='페이지요청'">5</button>
-                <button 
-                class="btn btn-outline-primary" style="color:#52b1ff;"
-                onclick="location.href='페이지요청'">6</button>
-                <button 
-                class="btn btn-outline-primary" style="color:#52b1ff;"
-                onclick="location.href='페이지요청'">7</button>
-                <button 
-                class="btn btn-outline-primary" style="color:#52b1ff;"
-                onclick="location.href='페이지요청'">8</button>
-                <button 
-                class="btn btn-outline-primary" style="color:#52b1ff;"
-                onclick="location.href='페이지요청'">9</button>
-                <button 
-                class="btn btn-outline-primary" style="color:#52b1ff;"
-                onclick="location.href='페이지요청'">10</button>
-	        			
+                onclick="location.href='boards?page=${i}'">${i}</button>
+               </c:forEach>
+	        	
+	        	<c:if test="${pi.currentPage ne pi.maxPagte }">
 	        	<button 
 	       		class="btn btn-outline-primary" style="color:#52b1ff;"
-	       		onclick="location.href='다음페이지매핑값'">다음</button>
+	       		onclick="location.href='${pi.cuttentPage+1}'">다음</button>
+	        	</c:if>		
         	
         </div>
       

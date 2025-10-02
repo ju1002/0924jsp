@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +16,15 @@
 </head>
 <body>
 	<jsp:include page="../include/header.jsp" />
+	
+	<c:if test="${userInfo eq null }">
+	<script>
+	alert("글작성은 로그인 이후 가능합니다.");
+	location.href="/KH";
+	</script>
+	</c:if>
+	
+	
 
 
 	<div class="outer">
@@ -25,17 +34,19 @@
 		
         <form action="insert.board" method="post" id="insert-form"
         	  enctype="multipart/form-data">
-        	  <!-- 파일 첨부여청을 보낼 때  위와  같이 form태그에 반드시 메소드는 post enctype이 저 문자열 그대로 작성해야 함 -->
+        	  <!-- 파일첨부요청을 보낼 때 form태그에 반드시
+        	  		enctype="multipart/form-data"라고 적혀있어얗마 -->
         
         	<div class="form-group">
+        	
 	        	<select name="category" class="form-control">
-	        	<c:forEach items="${category}"var="c">
-	        		<option valu="${c.categoryNo }">
-	        			${c.categoryName }
-                    </option >
-                    </c:forEach>
-                        
-                  
+	        	
+	        	<c:forEach items="${category }" var="c">
+                    <option value="${c.categoryNo }">
+                      ${c.categoryName }
+                    </option>
+	        	</c:forEach>
+	        	
 	        	</select>
         	</div>
 
@@ -63,21 +74,7 @@
         
     </div>
     
-    
     <jsp:include page="../include/footer.jsp" />
-    
-    
-    <c:if test="${userInfo eq null }">
-    <script>
-    alert(":글작성은 로그인 이후 이용가능합니다.");
-    location.href("/KH");
-    </script>
-    </c:if>
-    
-    
-    
-    
 
 </body>
 </html>
-    

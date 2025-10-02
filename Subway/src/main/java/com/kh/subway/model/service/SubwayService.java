@@ -23,7 +23,7 @@ public class SubwayService {
 	
 	public List<Subway> findAll() {
 		SqlSession session = Template.getSqlSession();
-		return orders;
+	return Subway;
 	
 	}
 
